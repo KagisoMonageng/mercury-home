@@ -1,7 +1,7 @@
 <template>
     <header>
         <div class="container flex place-items-center pt-0">
-            <img src="../assets/images/Mercury-home-ww.png" class="w-52" alt="">
+            <RouterLink to="/" ><img src="../assets/images/Mercury-home-ww.png" class="w-52" alt=""></RouterLink>
             <nav>
                 <RouterLink to="/" class="main-link">Home</RouterLink>
 
@@ -23,6 +23,7 @@
 
 <script setup>
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
+import { RouterLink } from 'vue-router';
 </script>
 
 <style lang="scss" scoped>
@@ -31,12 +32,12 @@ header {
     position: fixed;
     top: 0;
     background-image: linear-gradient(to bottom,#0000006e,transparent);
-    @apply bg-opacity-30 ;
+    @apply bg-opacity-30;
 
     & nav {
         width: 100%;
         display: flex;
-        justify-content: end;
+        justify-content: flex-end;
         place-items: center;
         gap: 20px;
     }
