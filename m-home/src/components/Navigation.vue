@@ -1,69 +1,78 @@
 <template>
-    <header>
-        <div class="container flex place-items-center pt-0">
-            <RouterLink to="/" ><img src="../assets/images/Mercury-home-ww.png" class="w-52" alt=""></RouterLink>
-            <nav>
-                <RouterLink to="/" class="main-link">Home</RouterLink>
+    <header class="fixed inset-x-0 top-0 z-50 ">
+        <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
+            <div class="flex lg:flex-1">
+                <RouterLink to="/home" class="-m-1.5 p-1.5">
+                    <span class="sr-only">Mercury Home</span>
+                    <img class="w-28 h-auto" src="../assets/images/Mercury-home-ww.png" alt="" />
+                </RouterLink>
+            </div>
+            <div class="flex lg:hidden">
+                <button type="button" class="-m-2.5 flex place-items-center justify-center rounded-md p-2.5"
+                    @click="mobileMenuOpen = true">
+                    <span class="sr-only">Open main menu</span>
+                    <i class="fi fi-br-menu-burger icon icon-menu">&nbsp;</i>
 
-                <Popover class="relative">
-                    <PopoverButton class="focus:outline-none rounded-xl flex place-items-end"><span class="main-link">About Us</span></PopoverButton>
-                    <PopoverPanel class="absolute z-10 right-0 w-40 py-3">
-                        <div class="bg-white bg-opacity-50 backdrop-blur-sm rounded-xl flex flex-col py-4">
-                            <RouterLink to="/about" class="menu-item px-4 mb-2">Our Vision</RouterLink>
-                            <RouterLink to="/drive" class="menu-item px-4 mb-2">What drives us</RouterLink>
-                            <RouterLink to="/stores" class="menu-item px-4 mb-2">Find a store?</RouterLink>
+                </button>
+            </div>
+            <div class="hidden lg:flex lg:gap-x-12">
+                <RouterLink v-for="item in navigation" :key="item.name" :to="item.href"
+                    class="text-sm font-normal leading-6 text-white">{{ item.name }}</RouterLink>
+            </div>
+            <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+                <RouterLink to="/login" class="text-sm font-semibold leading-6 text-white">Log in <span
+                        aria-hidden="true">&rarr;</span></RouterLink>
+            </div>
+        </nav>
+        <Dialog as="div" class="lg:hidden" @close="mobileMenuOpen = false" :open="mobileMenuOpen">
+            <div class="fixed inset-0 z-50" />
+            <DialogPanel
+                class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+                <div class="flex items-center justify-between">
+                    <RouterLink to="/home" class="-m-1.5 p-1.5">
+                        <span class="sr-only">Mercury Home</span>
+                        <img class="w-28" src="../assets/images/Mercury-home-bb.png"
+                            alt="" />
+                    </RouterLink>
+                    <button type="button" class="-m-2.5 flex place-items-center justify-center rounded-md p-2.5" @click="mobileMenuOpen = false">
+                        <span class="sr-only">Close menu</span>
+                        <i class="fi fi-br-menu-burger icon icon-menu">&nbsp;</i>
+                    </button>
+                </div>
+                <div class="mt-6 flow-root">
+                    <div class="-my-6 divide-y divide-gray-500/10">
+                        <div class="space-y-2 py-6">
+                            <RouterLink v-for="item in navigation" :key="item.name" :to="item.href"
+                                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                                {{ item.name }}</RouterLink>
                         </div>
-                    </PopoverPanel>
-                </Popover>
-                <RouterLink to="/contact" class="main-link">Contact Us</RouterLink>
-            </nav>
-        </div>
+                        <div class="py-6">
+                            <RouterLink to="#"
+                                class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                                Log in</RouterLink>
+                        </div>
+                    </div>
+                </div>
+            </DialogPanel>
+        </Dialog>
     </header>
 </template>
 
 <script setup>
-import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
+// import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
+import {ref} from 'vue'
+import { Dialog, DialogPanel } from '@headlessui/vue'
+import { MenuIcon } from 'vue-feather-icons'
 import { RouterLink } from 'vue-router';
+
+const navigation = [
+    { name: 'Home', href: '/' },
+    { name: 'About Us', href: '/about' },
+    { name: 'Branches', href: '/branches' },
+    { name: 'Contact Us', href: '/contact-us' },
+]
+
+const mobileMenuOpen = ref(false);
 </script>
 
-<style lang="scss" scoped>
-header {
-    width: 100%;
-    position: fixed;
-    top: 0;
-    background-image: linear-gradient(to bottom,#0000006e,transparent);
-    @apply bg-opacity-30;
-
-    & nav {
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
-        place-items: center;
-        gap: 20px;
-    }
-
-    & .main-link {
-        font-size: 18px;
-        font-weight: 300;
-        color: #fff;
-        transition: all 0.5s ease-in-out;
-        padding: 5px 10px;
-        border-radius: 10px;
-        &:hover{
-            background-color: #ffffff85;
-        }
-
-
-    }
-
-    & .menu-item {
-        font-size: 17px;
-        color: #fff;
-        font-weight: 300;
-        & :hover{
-            color: #000;
-        }
-    }
-
-}
-</style>
+<style lang="scss" scoped></style>

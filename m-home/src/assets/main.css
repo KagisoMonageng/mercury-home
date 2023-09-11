@@ -1,32 +1,82 @@
 @import './base.css';
 
-*{
+* {
   font-family: 'Poppins', sans-serif;
 }
+
 .container {
   max-width: 1280px;
   margin: 0 auto;
 }
-section{
+
+section {
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100vh;
+  display: flex;
+  place-items: center;
 }
-#home{
+
+#home {
   background-image: url(../assets/images/home-image.jpg);
 }
-p{
-  margin-bottom: 15px;
-  
-}
-h2{
 
+p {
+  margin-bottom: 15px;
+}
+
+.link {
+  display: flex;
+  color: #fff;
+  place-items: center;
+  gap: 8px;
+  width: fit-content;
+  padding: 5px 20px;
+  border-radius: 20px;
+  border: 1px solid #fff;
+  transition: all .5s ease-in-out;
+  position: relative;
+
+  & i {
+    transition: all .2s ease-in-out;
+  }
+
+  & i::before {
+    top: 2px;
+    position: relative;
+  }
+
+  &:hover {
+    color: #1a1a1a;
+    background-color: #fff;
+
+    & i {
+      transform: translateX(5px)
+    }
+  }
+}
+
+h1 {
+  color: #fff;
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 1;
+
+  & span {
+    font-weight: 300;
+    font-size: 40px;
+    display: block;
+  }
+}
+
+h2 {
   margin-bottom: 5px;
   position: relative;
   font-size: 20px;
   font-weight: 600;
 }
+
 h2 span {
   position: relative;
   display: block;
@@ -35,4 +85,70 @@ h2 span {
   opacity: 0.3;
 }
 
+i.icon {
+  font-size: 2rem;
+}
 
+.graphic {
+  width: 100%;
+  height: 280px;
+  position: relative;
+  display: flex;
+  place-items: center;
+  justify-content: center;
+  background-image: url(../assets/images/bg-graphic.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 30px;
+  overflow: hidden;
+  filter: drop-shadow(4px 4px 2px rgba(52, 52, 52, 0.062));
+  
+  & .content{
+    position: relative;
+    font-size: 20px;
+    color: #1a1a1a;
+    
+    z-index: 1;
+    text-align: center;
+    & p.title{
+      font-weight: 300;
+    }
+    & p.short-copy {
+      font-size: 12px;
+      padding: 0px 40px;
+  }
+  }
+  &::before{
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    /* border-radius: 30px; */
+    background-color: #fffffff1;
+    backdrop-filter: blur(60px);
+    z-index: 0;
+  }
+}
+
+.main-input {
+  padding: 7px 20px;
+  border-radius: 10px;
+  outline: none;
+  font-size: 16px;
+  border: 1px solid #c3c3c3;
+  width: 300px;
+}
+
+.form-btn{
+  background-color: #1a1a1a;
+  color: #fff;
+  padding: 5px 15px; 
+  border-radius: 10px;
+  font-size: 15px;
+  transition: all 0.5s ease-in-out;
+  
+  &:hover{
+    color: #1a1a1a;
+    background-color: transparent;
+  }
+}
