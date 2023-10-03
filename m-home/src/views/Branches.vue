@@ -9,7 +9,7 @@
  
      <h2>Locate one of our fancy homes</h2>
 
-     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3582.9133290090404!2d28.071507375158042!3d-26.1017477598087!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e9572d3cf20bd4d%3A0x4ca4e1dad16cbb19!2sPinmill%20Farm!5e0!3m2!1sen!2sza!4v1696366044264!5m2!1sen!2sza" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3582.9133290090404!2d28.071507375158042!3d-26.1017477598087!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e9572d3cf20bd4d%3A0x4ca4e1dad16cbb19!2sPinmill%20Farm!5e0!3m2!1sen!2sza!4v1696366044264!5m2!1sen!2sza" width="100%" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
      
     </div>
   
