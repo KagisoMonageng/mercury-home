@@ -23,7 +23,7 @@
           </div>
         </div>
         <div class="scroller w-full flex justify-center absolute bottom-4 text-2xl text-center text-white">
-          <i class="fi fi-rr-mouse scroll-attention"></i>
+          <i class="fi fi-rr-mouse scroll-attention" id="scroller"></i>
         </div>
       </section>
       <article class="my-12">
@@ -115,10 +115,6 @@ import { gsap } from 'gsap';
 // import { ScrollSmoother} from 'gsap/ScrollSmoother'
 import { ScrollTrigger} from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger);
-
-
-
-
 </script>
 
 <style lang="scss" scoped>.wrap {

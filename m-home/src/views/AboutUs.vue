@@ -65,3 +65,16 @@ section#about-us{
 }
 
 </style>
+<script>
+import { gsap } from 'gsap';
+import { ScrollTrigger} from 'gsap/ScrollTrigger'
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.to(".main-heading",{opacity:0,scrollTrigger:{
+    trigger:".main-heading",
+    start: "top 10%",
+    scrub: true,
+}})
+
+
+</script>

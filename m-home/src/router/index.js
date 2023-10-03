@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import AboutUs from '../views/AboutUs.vue'
 import ContactUs from '../views/ContactUs.vue'
+import Branches from '../views/Branches.vue'
 
 
 const router = createRouter({
@@ -21,6 +22,10 @@ const router = createRouter({
       path: '/contact-us',
       name: 'contact-us',
       component: ContactUs
+    },{
+      path: '/branches',
+      name: 'branches',
+      component: Branches
     }
   ]
 })

@@ -1,6 +1,7 @@
 <template>
-    <header class="fixed inset-x-0 top-0 z-50 ">
-        <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
+    <header id="main-header" class="fixed inset-x-0 top-0 z-50">
+        <nav class="relative flex items-center justify-between px-6 lg:px-8" aria-label="Global">
+            <a id="scroller-trigger" class="absolute"></a>
             <div class="flex lg:flex-1">
                 <RouterLink to="/home" class="-m-1.5 p-1.5">
                     <span class="sr-only">Mercury Home</span>
@@ -31,10 +32,10 @@
                 <div class="flex items-center justify-between">
                     <RouterLink to="/home" class="-m-1.5 p-1.5">
                         <span class="sr-only">Mercury Home</span>
-                        <img class="w-28" src="../assets/images/Mercury-home-bb.png"
-                            alt="" />
+                        <img class="w-28" src="../assets/images/Mercury-home-bb.png" alt="" />
                     </RouterLink>
-                    <button type="button" class="-m-2.5 flex place-items-center justify-center rounded-md p-2.5" @click="mobileMenuOpen = false">
+                    <button type="button" class="-m-2.5 flex place-items-center justify-center rounded-md p-2.5"
+                        @click="mobileMenuOpen = false">
                         <span class="sr-only">Close menu</span>
                         <i class="fi fi-br-menu-burger icon icon-menu">&nbsp;</i>
                     </button>
@@ -60,10 +61,14 @@
 
 <script setup>
 // import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
-import {ref} from 'vue'
+import { ref } from 'vue'
 import { Dialog, DialogPanel } from '@headlessui/vue'
 import { MenuIcon } from 'vue-feather-icons'
 import { RouterLink } from 'vue-router';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger);
 
 const navigation = [
     { name: 'Home', href: '/' },
@@ -75,4 +80,42 @@ const navigation = [
 const mobileMenuOpen = ref(false);
 </script>
 
-<style lang="scss" scoped></style>
+
+
+<script>
+import { onMounted } from 'vue';
+
+export default {
+
+    setup() {
+            const header = document.getElementById("main-header")
+            const scr_trigger = document.getElementById("scroller-trigger")
+
+            console.log(header)
+            window.addEventListener("scroll", (scroll) => {
+                const scrollPosition = window.scrollY;
+                console.log("Scroll position:", scrollPosition);
+
+                if (scrollPosition > 0) {
+                    header.classList.add("bg-added")
+                } else {
+                    header.classList.remove("bg-added")
+                }
+            })
+    }
+
+}
+
+
+
+</script>
+
+<style lang="scss" scoped>
+header {
+    transition: all 0.5s ease-in-out;
+}
+
+header.bg-added {
+    background-color: #595957bf;
+}
+</style>
